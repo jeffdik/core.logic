@@ -3,9 +3,15 @@
   :extra-classpath-dirs ["checkouts/clojurescript/src/clj"
                          "checkouts/clojurescript/src/cljs"]
   :parent [org.clojure/pom.contrib "0.0.25"]
+
+  ;; lein 1
   :source-path "src/main/clojure"
-  :source-paths ["src/main/clojure"
-                 "src/test/clojure"]
+  :test-path "src/test/clojure"
+
+  ;; lein 2
+  :source-paths ["src/main/clojure"]
+  :test-paths ["src/test/clojure"]
+  
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [org.clojure/tools.macro "0.1.1"]]
   :dev-dependencies [[lein-swank "1.4.4"]
