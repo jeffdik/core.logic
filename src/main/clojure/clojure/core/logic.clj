@@ -141,6 +141,10 @@
 (defprotocol IRefinable
   (refinable? [x]))
 
+(extend-protocol IRefinable
+  nil
+    (refinable? [_] false))
+
 (defprotocol IRefine
   (refine [x v]))
 

@@ -1116,6 +1116,19 @@
            (== q {nil :foo}))
          '({nil :foo}))))
 
+(deftest test-nil-is-not-refinable
+  (letfn [(noto [g]
+            (conda [g fail] [succeed]))
+          (r [source-list so-far l]
+            (conda
+             [(fresh [?x]
+                     (membero ?x source-list)
+                     (noto (membero ?x so-far))
+                     (r source-list (lcons ?x so-far) l))]
+             [(== l so-far)]))]
+    (is (= (run* [q] (r [nil] [] q))
+           '([nil])))))
+
 ;; -----------------------------------------------------------------------------
 ;; Unifier
 
